@@ -2,6 +2,9 @@
 
 set -e
 
+# Create .htpasswd directory if it doesn't exist
+mkdir -p /etc/nginx/conf.d/
+
 # Check if API_USER and API_PASSWORD are set
 if [ -z "$API_USER" ] || [ -z "$API_PASSWORD" ]; then
     echo "ERROR: API_USER and API_PASSWORD must be set."
