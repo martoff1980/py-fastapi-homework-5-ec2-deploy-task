@@ -43,6 +43,9 @@ COPY ./src .
 # Copy commands
 COPY ./commands /commands
 
+# Copy nginx configuration
+COPY ./configs/nginx/nginx.conf /etc/nginx/nginx.conf
+
 # Ensure Unix-style line endings for scripts
 RUN dos2unix /commands/*.sh
 
