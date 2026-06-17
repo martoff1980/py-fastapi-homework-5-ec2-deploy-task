@@ -119,7 +119,7 @@ jobs:
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             set -e
             
-            cd ~/app
+            cd ~/src
 
             # Clone or pull repository
             if [ ! -d ".git" ]; then
