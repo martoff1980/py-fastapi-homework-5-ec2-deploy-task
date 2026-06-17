@@ -121,14 +121,19 @@ jobs:
             
             cd ~/src
 
-            # Clone or pull repository
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/${{ github.repository }} .
+            # Clone or update repository
+            if [ -d ".git" ]; then
+              echo "Repository exists, updating..."
+              git fetch origin main
+              git reset --hard origin/main
+              git clean -fd
             else
-              git reset --hard
-              git pull origin main
+              echo "Repository not found, cloning..."
+              rm -rf ~/src
+              mkdir -p ~/src
+              git clone https://github.com/${{ github.repository }} ~/src
             fi
-
+            
             # Create .env file
             cat > .env << 'ENVFILE'
             POSTGRES_USER=postgres
