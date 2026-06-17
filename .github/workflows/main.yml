@@ -121,19 +121,13 @@ jobs:
             
             cd ~/src
 
-            # Clone or update repository
-            if [ -d ".git" ]; then
-              echo "Repository exists, updating..."
-              cd src
-              git fetch origin main
-              git reset --hard origin/main
-              git clean -fd
-            else
-              echo "Repository not found, cloning..."
-              rm -rf ~/src
-              mkdir -p ~/src
-              git clone https://github.com/${{ github.repository }} ~/src
-            fi
+            cd ~
+
+            rm -rf src
+            
+            git clone https://github.com/${{ github.repository }} src
+            
+            cd src
             
             # Create .env file
             cat > .env << 'ENVFILE'
