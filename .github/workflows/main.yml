@@ -120,13 +120,8 @@ jobs:
             set -e
             
             cd ~/src
-
-            cd ~
-
             rm -rf src
-            
             git clone https://github.com/${{ github.repository }} src
-            
             cd src
             
             # Create .env file
