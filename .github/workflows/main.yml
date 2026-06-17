@@ -125,6 +125,7 @@ jobs:
             if [ ! -d ".git" ]; then
               git clone https://github.com/${{ github.repository }} .
             else
+              git reset --hard
               git pull origin main
             fi
 
